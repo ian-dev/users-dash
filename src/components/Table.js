@@ -37,6 +37,8 @@ export default function UsersTable() {
     },
   ];
 
+  const memoColumns = useMemo(() => columns, []);
+
   const [pageSize, setPageSize] = useState(10);
 
   console.log(data);
@@ -44,7 +46,7 @@ export default function UsersTable() {
   return (
     <DataGrid
       rows={data}
-      columns={columns}
+      columns={memoColumns}
       autoHeight={true}
       pageSize={pageSize}
       onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
