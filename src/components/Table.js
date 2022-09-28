@@ -17,25 +17,6 @@ const handleRowClick = (params) => {
 
 export default function UsersTable() {
   const { data = USERS, isLoading, refetch } = useGetUsersQuery();
-  // const columns = [
-  //   { field: "id", headerName: "ID", flex: 1, minWidth: 25 },
-  //   { field: "name", headerName: "NAME", flex: 2, minWidth: 150 },
-  //   { field: "email", headerName: "EMAIL", flex: 2, minWidth: 150 },
-  //   { field: "gender", headerName: "GENDER", flex: 2, minWidth: 150 },
-  //   { field: "isActive", headerName: "STATUS", flex: 1, minWidth: 150 },
-  //   {
-  //     field: "actions",
-  //     headerName: "ACTIONS",
-  //     flex: 1,
-  //     minWidth: 70,
-  //     renderCell: (params) => {
-  //       <>
-  //         <GenericButton icon={VisibilityIcon}></GenericButton>
-  //         <GenericButton icon={RemoveCircleIcon}></GenericButton>
-  //       </>;
-  //     },
-  //   },
-  // ];
 
   const memoColumns = useMemo(
     () => [
