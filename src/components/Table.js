@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // -------------------------------------
 //  DATA GRID MUI
@@ -14,19 +15,23 @@ const USERS = [];
 export default function UsersTable() {
   const { data = USERS, isLoading, refetch } = useGetUsersQuery();
   const userListHelper = useRef(USERS);
+  const navigate = useNavigate();
 
   useEffect(() => {
     userListHelper.current = data;
-    console.log(data);
+    // console.log(data);
   }, [data]);
 
   // CLICK HANDLERS
-  const viewClickHandler = (e, i, o, u) => {
+  const viewClickHandler = (e) => {
     // debugger;
-    const element = e.target.parentNode.parentNode.parentNode;
+    const element = e.target.parentNode.parentNode;
     const elementIndex = element.attributes.getNamedItem("data-rowindex").value;
     const users = userListHelper.current;
-    console.log(users[elementIndex].uuid);
+
+    navigate(`/users/${users[elementIndex].id}`);
+
+    console.log(users[elementIndex].id);
   };
 
   // const removeClickHandler = () => {};
@@ -44,11 +49,11 @@ export default function UsersTable() {
         flex: 1,
         minWidth: 150,
         renderCell: (params) => (
-          <strong>
+          <>
             <Button variant="contained" size="small" onClick={viewClickHandler}>
               View
             </Button>
-          </strong>
+          </>
         ),
       },
     ],
