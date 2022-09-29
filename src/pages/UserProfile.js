@@ -1,7 +1,8 @@
+import { useParams } from "react-router-dom";
+import { Card, CardHeader, CardContent } from "@mui/material";
 import GenericContainer from "../components/GenericContainer";
 import GenericButton from "../components/GenericButton";
 import UserAvatar from "../components/UserAvatar";
-import { Card, CardHeader, CardContent } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 // -------------------------------------
@@ -9,6 +10,7 @@ import TextField from "@mui/material/TextField";
 // -------------------------------------
 
 export default function UserProfile() {
+  const { id } = useParams();
   return (
     <GenericContainer width={"sm"}>
       <Card>

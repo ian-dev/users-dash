@@ -9,7 +9,7 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<UsersTable />} />
-          <Route path="/user/" element={<UserProfile />} />
+          <Route path="/user/:id" element={<UserProfile />} />
         </Routes>
       </HashRouter>
     </div>

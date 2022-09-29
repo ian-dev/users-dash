@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import { useGetUsersQuery } from "../utils/api";
 import { DataGrid } from "@mui/x-data-grid";
-import GenericButton from "./GenericButton";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { Button } from "@mui/material";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 // -------------------------------------
 //  DATA GRID MUI
@@ -11,12 +11,25 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 const USERS = [];
 
-const handleRowClick = (params) => {
-  console.log(`User: ${params.row.uuid}`);
-};
-
 export default function UsersTable() {
   const { data = USERS, isLoading, refetch } = useGetUsersQuery();
+  const userListHelper = useRef(USERS);
+
+  useEffect(() => {
+    userListHelper.current = data;
+    console.log(data);
+  }, [data]);
+
+  // CLICK HANDLERS
+  const viewClickHandler = (e, i, o, u) => {
+    // debugger;
+    const element = e.target.parentNode.parentNode.parentNode;
+    const elementIndex = element.attributes.getNamedItem("data-rowindex").value;
+    const users = userListHelper.current;
+    console.log(users[elementIndex].uuid);
+  };
+
+  // const removeClickHandler = () => {};
 
   const memoColumns = useMemo(
     () => [
@@ -29,21 +42,22 @@ export default function UsersTable() {
         field: "actions",
         headerName: "ACTIONS",
         flex: 1,
-        minWidth: 70,
-        renderCell: (params) => {
-          <>
-            <GenericButton icon={VisibilityIcon}></GenericButton>
-            <GenericButton icon={RemoveCircleIcon}></GenericButton>
-          </>;
-        },
+        minWidth: 150,
+        renderCell: (params) => (
+          <strong>
+            <Button variant="contained" size="small" onClick={viewClickHandler}>
+              View
+            </Button>
+          </strong>
+        ),
       },
     ],
     []
   );
 
-  const [pageSize, setPageSize] = useState(10);
+  // set on event
 
-  console.log(data);
+  const [pageSize, setPageSize] = useState(10);
 
   return (
     <DataGrid
@@ -55,7 +69,6 @@ export default function UsersTable() {
       rowsPerPageOptions={[10, 15, 30]}
       pagination
       {...data}
-      onRowClick={handleRowClick}
     />
   );
 }

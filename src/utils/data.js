@@ -1,6 +1,5 @@
 import { faker } from "@faker-js/faker";
 import { build, sequence, perBuild } from "@jackfranklin/test-data-bot";
-import { width } from "@mui/system";
 
 // -------------------------------------
 // FAKER DATA JACK FRANKLIN BUILDER
