@@ -32,4 +32,10 @@ const mockUsers = () => {
   return USERS;
 };
 
-export default mockUsers;
+const mockCurrentUser = (id) => {
+  const user = USERS.find((user) => parseInt(user.id) === parseInt(id));
+  // debugger;
+  return user;
+};
+
+export { mockUsers, mockCurrentUser };

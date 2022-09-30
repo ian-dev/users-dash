@@ -31,7 +31,7 @@ export default function UsersTable() {
 
     navigate(`/users/${users[elementIndex].id}`);
 
-    console.log(users[elementIndex].id);
+    // console.log(users[elementIndex].id);
   };
 
   // const removeClickHandler = () => {};
