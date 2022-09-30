@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useGetUsersQuery } from "../utils/api";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
