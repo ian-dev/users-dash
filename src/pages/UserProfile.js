@@ -1,11 +1,10 @@
-// import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetCurrentUserQuery } from "../utils/api";
 import { Card, CardHeader, CardContent } from "@mui/material";
 import GenericContainer from "../components/GenericContainer";
 import UserAvatar from "../components/UserAvatar";
-import TextField from "@mui/material/TextField";
-import { useSelector } from "react-redux";
+// import TextField from "@mui/material/TextField";
+// import { useSelector } from "react-redux";
 
 // -------------------------------------
 //  USER PROFILE PAGE
@@ -29,7 +28,10 @@ export default function UserProfile() {
   );
   debugger;
   const user = users.find((user) => parseInt(user.id) === parseInt(userid)); */
-  console.log("data from mock", data);
+  //
+  //
+
+  console.log(data);
 
   return (
     <GenericContainer width={"sm"}>
@@ -43,7 +45,7 @@ export default function UserProfile() {
           <h3>Address: {data.address}</h3>
           <h3>Status: {data.status}</h3>
           <h3>UUID: {data.uuid}</h3>
-          {/* FIELDS FOR EDIT USER
+          {/* TEXTFIELDS FOR EDIT USER
           <TextField
             disabled
             label="NAME"

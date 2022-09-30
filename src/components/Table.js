@@ -19,7 +19,6 @@ export default function UsersTable() {
 
   useEffect(() => {
     userListHelper.current = data;
-    // console.log(data);
   }, [data]);
 
   // CLICK HANDLERS
@@ -30,8 +29,6 @@ export default function UsersTable() {
     const users = userListHelper.current;
 
     navigate(`/users/${users[elementIndex].id}`);
-
-    // console.log(users[elementIndex].id);
   };
 
   // const removeClickHandler = () => {};
@@ -61,7 +58,6 @@ export default function UsersTable() {
   );
 
   // set on event
-
   const [pageSize, setPageSize] = useState(10);
 
   return (
