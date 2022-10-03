@@ -14,7 +14,7 @@ import Button from "@mui/material/Button";
 const USERS = [];
 
 export default function UsersTable() {
-  const { data = USERS, isLoading, refetch } = useGetUsersQuery();
+  const { data = USERS } = useGetUsersQuery();
   const [open, setOpen] = useState(false);
   const [pageSize, setPageSize] = useState(10);
   const [selectedUser, setSelectedUser] = useState();
@@ -105,7 +105,7 @@ export default function UsersTable() {
   );
 
   return (
-    <>
+    <div data-testid="users-table">
       <DataGrid
         rows={updatedUsers}
         columns={memoColumns}
@@ -122,6 +122,6 @@ export default function UsersTable() {
         callback={closeAlert}
         userToDelete={deleteSelectedUser}
       />
-    </>
+    </div>
   );
 }
