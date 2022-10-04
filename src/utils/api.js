@@ -20,6 +20,15 @@ export const usersApi = createApi({
     },
   }),
   endpoints: (build) => ({
+    getCurrentUser: build.query({
+      query: (params) => {
+        const { id } = params;
+        return {
+          url: `https://jsonplaceholder.typicode.com/user/${id}`,
+          method: "GET",
+        };
+      },
+    }),
     getUsers: build.query({
       query: () => ({
         url: "https://jsonplaceholder.typicode.com/users",
@@ -29,4 +38,4 @@ export const usersApi = createApi({
   }),
 });
 
-export const { useGetUsersQuery } = usersApi;
+export const { useGetUsersQuery, useGetCurrentUserQuery } = usersApi;
