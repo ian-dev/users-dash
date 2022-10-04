@@ -43,7 +43,7 @@ export default function UserProfile() {
           <h3>Email: {data.email}</h3>
           <h3>Gender: {data.gender}</h3>
           <h3>Address: {data.address}</h3>
-          <h3>Status: {data.status}</h3>
+          <h3>Status: {data.isActive}</h3>
           <h3>UUID: {data.uuid}</h3>
           {/* TEXTFIELDS FOR EDIT USER
           <TextField
