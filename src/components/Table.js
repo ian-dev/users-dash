@@ -23,8 +23,6 @@ export default function UsersTable() {
   const updatedUsersHelper = useRef(USERS);
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     userListHelper.current = data;
     setUpdatesUsers(data);
